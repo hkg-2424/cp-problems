@@ -3,17 +3,17 @@ using namespace std;
 #define ll long long
 #define endl "\n" 
 void solve(){
-    int n;
-    cin>>n;
-    vector<int>v(n,0);
-    for(int i=0;i<n;i++)cin>>v[i];
-    int ans=0;
+    ll a,b,n;
+    cin>>a>>b>>n;
+    ll sum=0;
     for(int i=0;i<n;i++){
-        for(int j=i+1;j<n;j++){
-            if((v[j]-v[i])==(j-i))ans++;
-        }
+        ll temp;
+        cin>>temp;
+        if(temp>=a)sum+=(a-1);
+        else sum+=temp;
+
     }
-    cout<<ans<<endl;
+    cout<<sum+b<<endl;
     return;
 }
 int main(void){
