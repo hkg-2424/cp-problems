@@ -5,48 +5,27 @@ using namespace std;
 void solve(){
     int n;
     cin>>n;
-    int x=0;int idxof=0;
+    int xo=0;
     
     for(int i=1;i<=n;i++){
         int temp;
         cin>>temp;
-        if(temp==0)idxof=i;
-        x=temp^x;
+        
+        xo=(xo^temp);
     }
-    if(x==0){
+    if(xo==0){
         cout<<1<<endl;
         cout<<1<<" "<<n<<endl;
-    }else if(n&1){
-        cout<<4<<endl;
-        if((idxof&1)&&(idxof!=1) &&(idxof!=n)){
-            cout<<1<<" "<<idxof-1<<endl;
-             cout<<1<<" "<<idxof-1<<endl;
-            cout<<idxof+1<<" "<<n<<endl;
-              
-            cout<<idxof+1<<" "<<n<<endl;
-        }else if((idxof&1)&&(idxof!=1)){
-            cout<<1<<" "<<n-1<<endl;
-            cout<<1<<" "<<n-1<<endl;
-            cout<<1<<" "<<n-1<<endl;
-            cout<<1<<" "<<n-1<<endl;
-            
-            }
-        else if(idxof&1){
-            cout<<idxof+1<<" "<<n<<endl;
-            cout<<idxof+1<<" "<<n<<endl;
-            cout<<idxof+1<<" "<<n<<endl;
-            cout<<idxof+1<<" "<<n<<endl;
-        }else{
-            cout<<1<<' '<< idxof<<endl;
-            cout<<idxof+1<<" "<<n<<endl;
-            cout<<1<<' '<< idxof<<endl;
-            cout<<idxof+1<<" "<<n<<endl;
-        }
-
-    }else{
+    }else if((n&1) == 0){
         cout<<2<<endl;
         cout<<1<<" "<<n<<endl;
         cout<<1<<" "<<n<<endl;
+    }else{
+        cout<<4<<endl;
+        cout<<1<<" "<<2<<endl;
+        cout<<1<<" "<<2<<endl;
+        cout<<2<<" "<<n<<endl;
+        cout<<2<<" "<<n<<endl;
     }
     return;
 }
