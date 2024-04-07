@@ -3,49 +3,32 @@ using namespace std;
 #define ll long long
 #define endl "\n" 
 void solve(){
-    ll n ,k;
+    ll n,k;
     cin>>n>>k;
-    vector<ll>v;
+    k--;
+    vector<ll>v(n);
     for(int i=0;i<n;i++){
-        ll temp;
-        cin>>temp;
-        v.push_back(temp);
-
+        cin>>v[i];
+        // cout<<v[i]<<"@"<<endl;
     }
-    ll value=v[k-1];
-    // cout<<value<<endl;
-    if((value<=v[0]) && (value<=v[1])){
-        cout<<"0"<<endl;
-        // cout<<"default"<<endl;
-        return;
-    }
-    int ct=0;
-    vector<int>idx;
+    ll value=v[k];
+    ll idx=-1;
     for(int i=0;i<n;i++){
-        if(v[i]>value){
-            if(idx.size()<2)idx.push_back(i);
-            else break;
+        if(v[i]>value){idx=i;break;}
         }
-    }
-    if(idx.size()==0){
-        
-        cout<<n-1<<endl;
-        // cout<<"case0"<<endl;
-    }else if(idx[0]>(k-1)){
-        cout<<idx[0]-1<<endl;
-        // cout<<"case1"<<endl;
-    }
-    else if(idx[0]<2){
-
-            cout<<min(idx[1]-1,int(k-2))<<endl;;
-            // cout<<"case2"<<endl;
-           
-       
+    if(idx==-1){cout<<n-1<<endl;return;}
+    if(idx>k){
+        cout<<idx-1<<endl;return;
     }else{
-        int start=idx[0]-1;
-        int start2=min((int)k-1-idx[0],idx[1]-idx[0]);
-        cout<<max(start2,start)<<endl;
-        // cout<<"case3"<<endl;
+        ll ans=0;
+        if(idx>0)ans=1;
+        ll i=idx+1;
+        while(i<k && v[i]<value){
+            ans++;
+            i++;
+        }
+        cout<<max(ans,idx-1)<<endl;
+
     }
     return;
 }
