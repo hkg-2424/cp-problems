@@ -12,29 +12,16 @@ using namespace std;
 #define endl "\n"
 
 void solve(){
-   int n;
-   cin>>n;
-   if(n==2){
-    cout<<"7 3"<<endl;
-    cout<<"1 1 1 2"<<endl;
-    cout<<"1 2 1 2"<<endl;
-    cout<<"2 1 1 2"<<endl;
-    return;
+   string s;
+   cin>>s;
+   int one=0,zero=0;
+   for(int i=0;i<s.size();i++){
+    if(s[i]=='1')one++;
+    else zero++;
    }
-   ll sum=0;
-
-   for(int i=1;i<=n;i++){
-    sum+=(2*i-1)*i;
-   }
-   cout<<sum<<" "<<2*n<<endl;
-   for(int i=0;i<n;i++){
-    cout<<1<<" "<<n-i<<" ";
-    for(int j=0;j<n;j++)cout<<j+1<<" ";
-    cout<<endl;
-    cout<<2<<" "<<n-i<<" ";
-    for(int j=0;j<n;j++)cout<<j+1<<" ";
-    cout<<endl;
-   }
+   int ans=min(one,zero);
+   if(ans&1)cout<<"DA"<<endl;
+   else cout<<"NET"<<endl;
    return;
 }
 int main(){
