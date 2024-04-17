@@ -9,9 +9,12 @@ void solve(){
         cout<<-1<<endl;
         return;
     }
-    ll min=ceil(n/6.0);
+    ll min=n/6;
+    if(n%6)min++;
+
     
     ll max=n/4;
+
     cout<<min<<" "<<max<<endl;
 
     return;
@@ -21,7 +24,10 @@ ios_base::sync_with_stdio(false);
 cin.tie(NULL);
 ll testcase=1;
 cin>>testcase;
+// int x=1;
 while(testcase--){
+    // cout<<x<<endl;;
+    // x++;
    solve();
 }
 
