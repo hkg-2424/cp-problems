@@ -15,35 +15,26 @@ using namespace std;
 void solve(){
    int n;
    cin>>n;
-   ll sum=0;
-   int mini=INT_MAX,mini2=INT_MAX;
-   int idxofmini2=-1;
-   vector<vector<int>>v;
+   string s;
+   cin>>s;
+   int idxofb=-1;
+   int a_that_need_b=0,cancelable_a=0;
+   int c_that_cancel_a=0;
    for(int i=0;i<n;i++){
-    vector<int>dummy;
-    int k;
-    cin>>k;
-    for(int j=0;j<k;j++){
-        int temp;
-        cin>>temp;
-        dummy.pb(temp);
+    if(s[i]=='b'){
+        idxofb=i;
+        cancelable_a+=a_that_need_b;
+        a_that_need_b=0;
     }
-    sort(all(dummy));
-    sum+=dummy[1];
-    if(mini>dummy[0]){
-        
-        mini=dummy[0];
+    else if(s[i]=='a'){
+        if(idxofb<i){
+            a_that_need_b++;
+        }
+    }else if(idxofb>0 && i>idxofb){
+        c_that_cancel_a++;
     }
-    if(mini2>dummy[1]){
-        mini2=dummy[1];
-        idxofmini2=i;
-    }
-    v.push_back(dummy);
    }
-//    debug(mini)
-//    debug(sum);
-//    debug(idxofmini)
-   cout<<sum-v[idxofmini2][1]+mini<<endl;
+   cout<<min(c_that_cancel_a++,cancelable_a)<<endl;
    return;
 }
 int main(){
