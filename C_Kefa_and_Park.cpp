@@ -11,7 +11,7 @@ using namespace std;
 #define sz(v) (int)v.size()
 #define endl "\n"
 // hii my name is hkg
-ll dfs(vector<vector<int>>& connections,vector<int>&visited,vector<bool>catthere,int currentindex,int catsinrow,int maxallowable){
+ll dfs(vector<vector<int>>& connections,vector<int>&visited,vector<bool>&catthere,int currentindex,int catsinrow,int& maxallowable){
     if(visited[currentindex]==1)return 0;
     visited[currentindex]=1;
 
@@ -25,6 +25,7 @@ ll dfs(vector<vector<int>>& connections,vector<int>&visited,vector<bool>catthere
     for(int i=0;i<connections[currentindex].size();i++){
         ans+=dfs(connections,visited,catthere,connections[currentindex][i],catsinrow,maxallowable);
     }
+    
     return ans;
 
 }
