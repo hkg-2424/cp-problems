@@ -13,26 +13,29 @@ using namespace std;
 // hii my name is hkg
 
 void solve(){
-   int n,f,k;
-   cin>>n>>f>>k;
-   vector<int>v(n);
-   for(int i=0;i<n;i++)cin>>v[i];
-   int valueatf=v[f-1];
-   if(k==n){
-      cout<<"YES"<<endl;
-      return;
+   string s;
+   cin>>s;
+   bool kuchkarnahe=true;
+   for(int i=1;i<s.size();i++){
+    if(s[i]>='a')kuchkarnahe=false;
    }
-   sort(v.begin(),v.end(),greater<int>());
-   if(v[k]==valueatf && v[k-1]==valueatf)cout<<"MAYBE"<<endl;
-   else if(valueatf<=v[k])cout<<"NO"<<endl;
-   else cout<<"YES"<<endl;
+   if(kuchkarnahe){
+    for(int i=1;i<s.size();i++){
+        s[i]+='a'-'A';
+    }
+     if(!islower(s[0]))s[0]+='a'-'A';
+   cout<<s<<endl;
+   }else{
+    cout<<s<<endl;
+   }
+  
    return;
 }
 int main(){
    ios::sync_with_stdio(false);
    cin.tie(nullptr);
    ll testcase=1;
-   cin>>testcase;
+//    cin>>testcase;
    while(testcase--){
        solve();
    }

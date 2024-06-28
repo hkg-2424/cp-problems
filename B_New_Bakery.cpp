@@ -13,19 +13,19 @@ using namespace std;
 // hii my name is hkg
 
 void solve(){
-   int n,f,k;
-   cin>>n>>f>>k;
-   vector<int>v(n);
-   for(int i=0;i<n;i++)cin>>v[i];
-   int valueatf=v[f-1];
-   if(k==n){
-      cout<<"YES"<<endl;
-      return;
+   ll n,a,b;
+   cin>>n>>a>>b;
+   if(a>=b){
+    cout<<n*a<<endl;
+   }else{
+    ll kcost=b+1-a;
+    ll kquestion=min(n,b);
+    ll k=min(kcost,kquestion);
+    ll profit=(b+1)*k-k*(k+1)/2;
+   
+    profit+=(a*(n-k));
+    cout<<profit<<endl;
    }
-   sort(v.begin(),v.end(),greater<int>());
-   if(v[k]==valueatf && v[k-1]==valueatf)cout<<"MAYBE"<<endl;
-   else if(valueatf<=v[k])cout<<"NO"<<endl;
-   else cout<<"YES"<<endl;
    return;
 }
 int main(){

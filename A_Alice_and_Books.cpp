@@ -13,20 +13,15 @@ using namespace std;
 // hii my name is hkg
 
 void solve(){
-   int n,f,k;
-   cin>>n>>f>>k;
+   int n;
+   cin>>n;
    vector<int>v(n);
-   for(int i=0;i<n;i++)cin>>v[i];
-   int valueatf=v[f-1];
-   if(k==n){
-      cout<<"YES"<<endl;
-      return;
+   for(auto &i:v)cin>>i;
+   int max=-1;
+   for(int i=0;i<n-1;i++){
+      if(max<v[i])max=v[i];
    }
-   sort(v.begin(),v.end(),greater<int>());
-   if(v[k]==valueatf && v[k-1]==valueatf)cout<<"MAYBE"<<endl;
-   else if(valueatf<=v[k])cout<<"NO"<<endl;
-   else cout<<"YES"<<endl;
-   return;
+   cout<<max+v.back()<<endl;
 }
 int main(){
    ios::sync_with_stdio(false);

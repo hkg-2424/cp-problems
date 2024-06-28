@@ -12,27 +12,36 @@ using namespace std;
 #define endl "\n"
 // hii my name is hkg
 
+bool isanswer(vector<int>&v,int idx,int x,int y){
+    for(int i=1;i<=x;i++){
+        if(idx-i<0)break;
+        if(v[idx]>=v[idx-i])return false;
+    }
+    for(int i=1;i<=y;i++){
+        if(idx+i==v.size())return true;
+        if(v[idx]>=v[idx+i])return false;
+    }
+    return true;
+}
 void solve(){
-   int n,f,k;
-   cin>>n>>f>>k;
+   int n,x,y;
+   cin>>n>>x>>y;
    vector<int>v(n);
-   for(int i=0;i<n;i++)cin>>v[i];
-   int valueatf=v[f-1];
-   if(k==n){
-      cout<<"YES"<<endl;
-      return;
+   for(auto &i:v)cin>>i;
+   for(int i=0;i<n;i++){
+    if(isanswer(v,i,x,y)){
+        cout<<i+1<<endl;
+        return;
+    }
    }
-   sort(v.begin(),v.end(),greater<int>());
-   if(v[k]==valueatf && v[k-1]==valueatf)cout<<"MAYBE"<<endl;
-   else if(valueatf<=v[k])cout<<"NO"<<endl;
-   else cout<<"YES"<<endl;
+
    return;
 }
 int main(){
    ios::sync_with_stdio(false);
    cin.tie(nullptr);
    ll testcase=1;
-   cin>>testcase;
+//    cin>>testcase;
    while(testcase--){
        solve();
    }

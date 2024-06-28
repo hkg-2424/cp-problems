@@ -13,26 +13,26 @@ using namespace std;
 // hii my name is hkg
 
 void solve(){
-   int n,f,k;
-   cin>>n>>f>>k;
-   vector<int>v(n);
-   for(int i=0;i<n;i++)cin>>v[i];
-   int valueatf=v[f-1];
-   if(k==n){
-      cout<<"YES"<<endl;
-      return;
+   int n;
+   cin>>n;
+   vector<int>days(7);
+   for(int i=0;i<7;i++){
+    cin>>days[i];
    }
-   sort(v.begin(),v.end(),greater<int>());
-   if(v[k]==valueatf && v[k-1]==valueatf)cout<<"MAYBE"<<endl;
-   else if(valueatf<=v[k])cout<<"NO"<<endl;
-   else cout<<"YES"<<endl;
+   int day=-1;
+    while(n>0){
+        day++;
+        n-=days[day%7];
+        
+    }
+    cout<<(day%7) +1 <<endl;
    return;
 }
 int main(){
    ios::sync_with_stdio(false);
    cin.tie(nullptr);
    ll testcase=1;
-   cin>>testcase;
+//    cin>>testcase;
    while(testcase--){
        solve();
    }

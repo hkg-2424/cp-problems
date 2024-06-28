@@ -13,19 +13,36 @@ using namespace std;
 // hii my name is hkg
 
 void solve(){
-   int n,f,k;
-   cin>>n>>f>>k;
-   vector<int>v(n);
-   for(int i=0;i<n;i++)cin>>v[i];
-   int valueatf=v[f-1];
-   if(k==n){
-      cout<<"YES"<<endl;
-      return;
+   ll n,k;
+   cin>>n>>k;
+   if(k&1){
+    cout<<"No"<<endl;
+    return;
    }
-   sort(v.begin(),v.end(),greater<int>());
-   if(v[k]==valueatf && v[k-1]==valueatf)cout<<"MAYBE"<<endl;
-   else if(valueatf<=v[k])cout<<"NO"<<endl;
-   else cout<<"YES"<<endl;
+   vector<int>v(n+1);
+   for(int i=0;i<n+1;i++)v[i]=i;
+    k/=2;
+    int x=n-1;
+    for(int i=1;i<n+1;i++){
+        if(k<=x){
+            swap(v[i],v[i+k]);
+            k=0;
+            break;
+
+        }
+        swap(v[i],v[i+x]);
+        k-=x;
+        x-=2;
+    }
+    if(k>0){
+        cout<<"No"<<endl;
+        return;
+    }
+    cout<<"Yes"<<endl;
+    for(int i=1;i<=n;i++)cout<<v[i]<<" ";
+    cout<<endl;
+
+
    return;
 }
 int main(){

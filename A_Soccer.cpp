@@ -13,19 +13,18 @@ using namespace std;
 // hii my name is hkg
 
 void solve(){
-   int n,f,k;
-   cin>>n>>f>>k;
-   vector<int>v(n);
-   for(int i=0;i<n;i++)cin>>v[i];
-   int valueatf=v[f-1];
-   if(k==n){
-      cout<<"YES"<<endl;
-      return;
+   int x1,y1,x2,y2;
+   cin>>x1>>y1>>x2>>y2;
+   int modx=x2-x1,mody=y2-y1;
+   if(y2>x2 &&  y1<x1){
+    cout<<"NO"<<endl;
+    return;
+   }else if(x2>y2 && x1<y1 ){
+    cout<<"NO"<<endl;
+    return;    
    }
-   sort(v.begin(),v.end(),greater<int>());
-   if(v[k]==valueatf && v[k-1]==valueatf)cout<<"MAYBE"<<endl;
-   else if(valueatf<=v[k])cout<<"NO"<<endl;
-   else cout<<"YES"<<endl;
+
+   cout<<"YES"<<endl;
    return;
 }
 int main(){

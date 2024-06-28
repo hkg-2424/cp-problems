@@ -13,19 +13,25 @@ using namespace std;
 // hii my name is hkg
 
 void solve(){
-   int n,f,k;
-   cin>>n>>f>>k;
-   vector<int>v(n);
-   for(int i=0;i<n;i++)cin>>v[i];
-   int valueatf=v[f-1];
-   if(k==n){
-      cout<<"YES"<<endl;
-      return;
+   ll n;
+   cin>>n;
+   
+   ll suma=0,sumb=0;
+   ll mina=INT_MAX;
+   ll minb=INT_MAX;
+   for(int i=0;i<n;i++){
+    ll temp;
+    cin>>temp;
+    suma+=temp;
+    mina=min(mina,temp);
    }
-   sort(v.begin(),v.end(),greater<int>());
-   if(v[k]==valueatf && v[k-1]==valueatf)cout<<"MAYBE"<<endl;
-   else if(valueatf<=v[k])cout<<"NO"<<endl;
-   else cout<<"YES"<<endl;
+    for(int i=0;i<n;i++){
+    ll temp;
+    cin>>temp;
+    sumb+=temp;
+    minb=min(minb,temp);
+   }
+   cout<<min(sumb+mina*n,suma+minb*n)<<endl;
    return;
 }
 int main(){
