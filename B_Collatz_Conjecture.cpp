@@ -52,7 +52,7 @@ void solve1(){
        ll x,y,k;
    cin>>x>>y>>k;
    for(;k>0;){
-    if(x==1 &&y==2)break;
+    if(x==1)break;
     if(x%y==0){
         x++;
         k--;
@@ -66,6 +66,10 @@ void solve1(){
         x+=k;
         k=0;
     }
+   }
+   if(x==1){
+    cout<<k%(y-1)+1<<endl;
+    return;
    }
    cout<<x<<endl;
 }
