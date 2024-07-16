@@ -13,29 +13,21 @@ using namespace std;
 // hii my name is hkg
 
 void solve(){
-   int n;
-   cin>>n;
-   vector<int>v(n);
-   for(int i=0;i<n;i++)cin>>v[i];
-   int idx=-1,a,b;
-   for(int i=0;i<n-1;i++){
-    if(v[i]<v[i+1]){
-        idx=i;
-        break;
-    }
+   ll n,k;
+   cin>>n>>k;
+   ll sum=0;
+   ll maxnum=1;
+   for(int i=0;i<k;i++){
+    ll temp;
+    cin>>temp;
+    sum+=temp;
+    maxnum=max(temp,maxnum);
    }
-   if(idx==-1){
-    cout<<"NO"<<endl;
-    return;
-   }
-   cout<<"YES"<<endl;
-   for(int i=1;i<2;i++){
-    cout<<'R';
-   }
-   cout<<"B";
-   for(int i=3;i<=n;i++)cout<<"R";
-   cout<<endl;
-   
+   ll ans=sum-maxnum-(k-1);
+   ans+=(sum-maxnum);
+   cout<<ans<<endl;
+
+
    return;
 }
 int main(){

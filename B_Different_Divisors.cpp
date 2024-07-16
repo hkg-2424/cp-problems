@@ -11,31 +11,28 @@ using namespace std;
 #define sz(v) (int)v.size()
 #define endl "\n"
 // hii my name is hkg
-
+vector<int>primearray;
+vector<bool>number(1e5+1,true);
+void seive(){
+    number[0]=number[1]=true;
+    for(ll i=2;i<number.size();i++){
+        if(number[i]==true){
+            primearray.pb(i);
+            
+            for(ll j=i*i;j<=number.size();j+=i){
+                number[j]=false;
+            }
+        }
+    }
+}
 void solve(){
    int n;
    cin>>n;
-   vector<int>v(n);
-   for(int i=0;i<n;i++)cin>>v[i];
-   int idx=-1,a,b;
-   for(int i=0;i<n-1;i++){
-    if(v[i]<v[i+1]){
-        idx=i;
-        break;
-    }
-   }
-   if(idx==-1){
-    cout<<"NO"<<endl;
-    return;
-   }
-   cout<<"YES"<<endl;
-   for(int i=1;i<2;i++){
-    cout<<'R';
-   }
-   cout<<"B";
-   for(int i=3;i<=n;i++)cout<<"R";
-   cout<<endl;
-   
+   ll ans=1;
+   ans=ans*(*(lower_bound(all(primearray),ans+n)));
+   ans=ans*(*(lower_bound(all(primearray),ans+n)));
+   cout<< ans<<endl;
+//    for(auto &i:primearray)cout<<i<<endl;
    return;
 }
 int main(){
@@ -43,6 +40,7 @@ int main(){
    cin.tie(nullptr);
    ll testcase=1;
    cin>>testcase;
+   seive();
    while(testcase--){
        solve();
    }

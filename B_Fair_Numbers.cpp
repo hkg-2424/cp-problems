@@ -11,31 +11,25 @@ using namespace std;
 #define sz(v) (int)v.size()
 #define endl "\n"
 // hii my name is hkg
-
-void solve(){
-   int n;
-   cin>>n;
-   vector<int>v(n);
-   for(int i=0;i<n;i++)cin>>v[i];
-   int idx=-1,a,b;
-   for(int i=0;i<n-1;i++){
-    if(v[i]<v[i+1]){
-        idx=i;
-        break;
+bool fair(ll n){
+    ll temp=n;
+    while(temp){
+        ll div=temp%10;
+        temp/=10;
+        if(div==0)continue;
+        if(n%div)return false;
     }
-   }
-   if(idx==-1){
-    cout<<"NO"<<endl;
-    return;
-   }
-   cout<<"YES"<<endl;
-   for(int i=1;i<2;i++){
-    cout<<'R';
-   }
-   cout<<"B";
-   for(int i=3;i<=n;i++)cout<<"R";
-   cout<<endl;
-   
+    return true;
+}
+void solve(){
+   ll n;
+   cin>>n;
+    for(ll i=n;true;i++){
+        if(fair(i)){
+            cout<<i<<endl;
+            return;
+        }
+    }
    return;
 }
 int main(){

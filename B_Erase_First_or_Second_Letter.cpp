@@ -15,26 +15,9 @@ using namespace std;
 void solve(){
    int n;
    cin>>n;
-   vector<int>v(n);
-   for(int i=0;i<n;i++)cin>>v[i];
-   int idx=-1,a,b;
-   for(int i=0;i<n-1;i++){
-    if(v[i]<v[i+1]){
-        idx=i;
-        break;
-    }
-   }
-   if(idx==-1){
-    cout<<"NO"<<endl;
-    return;
-   }
-   cout<<"YES"<<endl;
-   for(int i=1;i<2;i++){
-    cout<<'R';
-   }
-   cout<<"B";
-   for(int i=3;i<=n;i++)cout<<"R";
-   cout<<endl;
+   string s;
+   cin>>s;
+   vector<int>ans(n,0);
    
    return;
 }

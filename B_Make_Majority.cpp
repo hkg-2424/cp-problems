@@ -15,27 +15,19 @@ using namespace std;
 void solve(){
    int n;
    cin>>n;
-   vector<int>v(n);
-   for(int i=0;i<n;i++)cin>>v[i];
-   int idx=-1,a,b;
-   for(int i=0;i<n-1;i++){
-    if(v[i]<v[i+1]){
-        idx=i;
-        break;
+   vector<char>v;
+   int ones=0,zeroes=0;
+   for(int i=0;i<n;i++){
+    char c;
+    cin>>c;
+    if(c=='1' || v.size()==0|| v.back()!=c)v.pb(c);
     }
-   }
-   if(idx==-1){
-    cout<<"NO"<<endl;
-    return;
-   }
-   cout<<"YES"<<endl;
-   for(int i=1;i<2;i++){
-    cout<<'R';
-   }
-   cout<<"B";
-   for(int i=3;i<=n;i++)cout<<"R";
-   cout<<endl;
-   
+    for(int i=0;i<v.size();i++){
+        if(v[i]=='1')ones++;
+        else zeroes++;
+    }
+   if(ones>zeroes)cout<<"Yes"<<endl;
+   else cout<<"No"<<endl;
    return;
 }
 int main(){

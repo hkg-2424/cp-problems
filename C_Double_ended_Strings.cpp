@@ -13,29 +13,22 @@ using namespace std;
 // hii my name is hkg
 
 void solve(){
-   int n;
-   cin>>n;
-   vector<int>v(n);
-   for(int i=0;i<n;i++)cin>>v[i];
-   int idx=-1,a,b;
-   for(int i=0;i<n-1;i++){
-    if(v[i]<v[i+1]){
-        idx=i;
-        break;
+   string a,b;
+   cin>>a>>b;
+   int maxlengthcommon=0;
+   for(int i=0;i<a.size();i++){
+    for(int j=0;j<b.size();j++){
+        if(a[i]==b[j]){
+            int length=0;
+            while(i+length<a.size() && j+length<b.size() && a[i+length]==b[j+length]){
+                length++;
+
+            }
+            maxlengthcommon=max(maxlengthcommon,length);
+        }
     }
    }
-   if(idx==-1){
-    cout<<"NO"<<endl;
-    return;
-   }
-   cout<<"YES"<<endl;
-   for(int i=1;i<2;i++){
-    cout<<'R';
-   }
-   cout<<"B";
-   for(int i=3;i<=n;i++)cout<<"R";
-   cout<<endl;
-   
+   cout<<a.size()+b.size()-2* maxlengthcommon<<endl;
    return;
 }
 int main(){

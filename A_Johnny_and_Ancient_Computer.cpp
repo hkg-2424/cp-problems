@@ -13,29 +13,27 @@ using namespace std;
 // hii my name is hkg
 
 void solve(){
-   int n;
-   cin>>n;
-   vector<int>v(n);
-   for(int i=0;i<n;i++)cin>>v[i];
-   int idx=-1,a,b;
-   for(int i=0;i<n-1;i++){
-    if(v[i]<v[i+1]){
-        idx=i;
-        break;
-    }
-   }
-   if(idx==-1){
-    cout<<"NO"<<endl;
+   ll a,b;
+   cin>>a>>b;
+   if(a==b){
+    cout<<0<<endl;
     return;
    }
-   cout<<"YES"<<endl;
-   for(int i=1;i<2;i++){
-    cout<<'R';
+   int factora=0,factorb=0;
+   while(a%2==0){
+    factora++;
+    a/=2;
    }
-   cout<<"B";
-   for(int i=3;i<=n;i++)cout<<"R";
-   cout<<endl;
-   
+   while(b%2==0){
+    factorb++;
+    b/=2;
+   }
+   if(a!=b){
+    cout<<-1<<endl;
+    return;
+   }
+   int diff=abs(factora-factorb);
+   cout<<diff/3+ (diff%3?1:0)<<endl;
    return;
 }
 int main(){

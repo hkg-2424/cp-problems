@@ -1,0 +1,1 @@
+{"name":"Local: knapsackgfg","url":"e:\\cp\\knapsackgfg.cpp","tests":[{"id":1721069601790,"input":"1\n3 3\n1 2 3\n4 5 6","output":""}],"interactive":false,"memoryLimit":1024,"timeLimit":3000,"srcPath":"e:\\cp\\knapsackgfg.cpp","group":"local","local":true}

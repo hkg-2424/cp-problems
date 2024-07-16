@@ -11,31 +11,19 @@ using namespace std;
 #define sz(v) (int)v.size()
 #define endl "\n"
 // hii my name is hkg
+int xorarray[int(3e5+1)]={0};
 
 void solve(){
-   int n;
-   cin>>n;
-   vector<int>v(n);
-   for(int i=0;i<n;i++)cin>>v[i];
-   int idx=-1,a,b;
-   for(int i=0;i<n-1;i++){
-    if(v[i]<v[i+1]){
-        idx=i;
-        break;
-    }
-   }
-   if(idx==-1){
-    cout<<"NO"<<endl;
-    return;
-   }
-   cout<<"YES"<<endl;
-   for(int i=1;i<2;i++){
-    cout<<'R';
-   }
-   cout<<"B";
-   for(int i=3;i<=n;i++)cout<<"R";
-   cout<<endl;
-   
+   int a,b;
+   cin>>a>>b;
+   int xr=xorarray[a-1];
+   int ans=a;
+   if(xr==b){}
+   else if((xr^b)==a)ans+=2;
+   else ans++;
+
+   cout<<ans<<endl;
+
    return;
 }
 int main(){
@@ -43,6 +31,9 @@ int main(){
    cin.tie(nullptr);
    ll testcase=1;
    cin>>testcase;
+   for(int i=1;i<3e5+1;i++){
+    xorarray[i]=i^xorarray[i-1];
+   }
    while(testcase--){
        solve();
    }

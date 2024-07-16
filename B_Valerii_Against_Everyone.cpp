@@ -15,26 +15,19 @@ using namespace std;
 void solve(){
    int n;
    cin>>n;
-   vector<int>v(n);
-   for(int i=0;i<n;i++)cin>>v[i];
-   int idx=-1,a,b;
-   for(int i=0;i<n-1;i++){
-    if(v[i]<v[i+1]){
-        idx=i;
-        break;
+   unordered_map<int,int>mp;
+   for(int i=0;i<n;i++){
+    int temp;
+    cin>>temp;
+    mp[temp]++;
+   }
+   for(auto i:mp){
+    if(i.second>=2){
+        cout<<"YES"<<endl;
+        return;
     }
    }
-   if(idx==-1){
-    cout<<"NO"<<endl;
-    return;
-   }
-   cout<<"YES"<<endl;
-   for(int i=1;i<2;i++){
-    cout<<'R';
-   }
-   cout<<"B";
-   for(int i=3;i<=n;i++)cout<<"R";
-   cout<<endl;
+   cout<<"NO"<<endl;
    
    return;
 }

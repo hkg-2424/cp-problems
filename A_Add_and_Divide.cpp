@@ -12,31 +12,31 @@ using namespace std;
 #define endl "\n"
 // hii my name is hkg
 
+ll steps(ll a,ll i){
+   int cnt=0;
+   while(a){
+      a/=i;
+      cnt++;
+   }
+   return cnt;
+}
 void solve(){
-   int n;
-   cin>>n;
-   vector<int>v(n);
-   for(int i=0;i<n;i++)cin>>v[i];
-   int idx=-1,a,b;
-   for(int i=0;i<n-1;i++){
-    if(v[i]<v[i+1]){
-        idx=i;
-        break;
-    }
-   }
-   if(idx==-1){
-    cout<<"NO"<<endl;
-    return;
-   }
-   cout<<"YES"<<endl;
-   for(int i=1;i<2;i++){
-    cout<<'R';
-   }
-   cout<<"B";
-   for(int i=3;i<=n;i++)cout<<"R";
-   cout<<endl;
+   ll a,b;
+   cin>>a>>b;
    
-   return;
+   ll noofsteps=0;
+   int add=0;
+   if(b==1){
+      b++;
+      add=1;
+   }
+   noofsteps+=(steps(a,b));
+   for(ll i=b+1;true;i++){
+      if(i-b+steps(a,i)>noofsteps)break;
+      else noofsteps=(i-b+steps(a,i));
+   }
+   cout<<noofsteps+add<<endl;
+
 }
 int main(){
    ios::sync_with_stdio(false);

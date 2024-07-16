@@ -16,26 +16,10 @@ void solve(){
    int n;
    cin>>n;
    vector<int>v(n);
-   for(int i=0;i<n;i++)cin>>v[i];
-   int idx=-1,a,b;
-   for(int i=0;i<n-1;i++){
-    if(v[i]<v[i+1]){
-        idx=i;
-        break;
-    }
-   }
-   if(idx==-1){
-    cout<<"NO"<<endl;
-    return;
-   }
-   cout<<"YES"<<endl;
-   for(int i=1;i<2;i++){
-    cout<<'R';
-   }
-   cout<<"B";
-   for(int i=3;i<=n;i++)cout<<"R";
+   for(auto &i:v)cin>>i;
+   sort(all(v),greater<int>());
+   for(auto &i:v)cout<<i<<" ";
    cout<<endl;
-   
    return;
 }
 int main(){

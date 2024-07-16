@@ -15,27 +15,33 @@ using namespace std;
 void solve(){
    int n;
    cin>>n;
-   vector<int>v(n);
-   for(int i=0;i<n;i++)cin>>v[i];
-   int idx=-1,a,b;
-   for(int i=0;i<n-1;i++){
-    if(v[i]<v[i+1]){
-        idx=i;
-        break;
-    }
+   vector<pair<ll,ll>>vp(n);
+   vector<ll>timesvisit(n);
+
+   for(int i=0;i<n;i++){
+    cin>>vp[i].first;
+    timesvisit[i]=vp[i].first;
+    vp[i].second=i+1;
    }
-   if(idx==-1){
-    cout<<"NO"<<endl;
-    return;
+   sort(all(vp));
+   vector<ll>pos(n+1);
+   pos[0]=0;
+   int distance=1;
+   for(int i=n-1;i>=0;i-=2){
+    pos[vp[i].second]=distance;
+    if(i==0)break;
+    pos[vp[i-1].second]=-distance;
+    distance++;
    }
-   cout<<"YES"<<endl;
-   for(int i=1;i<2;i++){
-    cout<<'R';
-   }
-   cout<<"B";
-   for(int i=3;i<=n;i++)cout<<"R";
-   cout<<endl;
    
+    ll time=0;
+    for(int i=0;i<n;i++){
+        time+=(2*abs(pos[i+1]-pos[0])*timesvisit[i]);
+    }
+    cout<<time<<endl;
+    for(auto &i:pos)cout<<i<<" ";
+    cout<<endl;
+
    return;
 }
 int main(){
