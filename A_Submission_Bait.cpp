@@ -15,14 +15,20 @@ using namespace std;
 void solve(){
    int n;
    cin>>n;
-   string s;
-   cin>>s;
-   vector<int>v(26,n);
+   vector<int>v(n+1,0);
    for(int i=0;i<n;i++){
-      if(v[s[i]-'a']==n)v[s[i]-'a']=i;
+    int temp;
+    cin>>temp;
+    v[temp]++;
    }
-   int sum=accumulate(all(v),0);
-   cout<<26*n-sum<<endl;
+   
+   for(int i=1;i<=n;i++){
+    if(v[i]&1){
+        cout<<"YES"<<endl;
+        return;
+    }
+   }
+   cout<<"NO"<<endl;
    return;
 }
 int main(){

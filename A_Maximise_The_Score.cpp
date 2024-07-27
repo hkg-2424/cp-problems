@@ -13,16 +13,13 @@ using namespace std;
 // hii my name is hkg
 
 void solve(){
-   int n;
-   cin>>n;
-   string s;
-   cin>>s;
-   vector<int>v(26,n);
-   for(int i=0;i<n;i++){
-      if(v[s[i]-'a']==n)v[s[i]-'a']=i;
-   }
-   int sum=accumulate(all(v),0);
-   cout<<26*n-sum<<endl;
+   int n;cin>>n;
+   vector<int> v(2*n);
+   for(int i=0;i<v.size();i++)cin>>v[i];
+   sort(all(v));
+   ll ans=0;
+   for(int i=0;i<v.size();i+=2)ans+=v[i];
+   cout<<ans<<endl;
    return;
 }
 int main(){

@@ -13,23 +13,28 @@ using namespace std;
 // hii my name is hkg
 
 void solve(){
-   int n;
-   cin>>n;
-   string s;
-   cin>>s;
-   vector<int>v(26,n);
-   for(int i=0;i<n;i++){
-      if(v[s[i]-'a']==n)v[s[i]-'a']=i;
-   }
-   int sum=accumulate(all(v),0);
-   cout<<26*n-sum<<endl;
+   string a,b;
+   cin>>a>>b;
+transform(a.begin(), a.end(), a.begin(), ::tolower);
+transform(b.begin(), b.end(), b.begin(), ::tolower);
+// cout<<a<<" "<<b<<endl;
+for(int i=0;i<a.size();i++){
+    if(a[i]<b[i]){
+        cout<<-1<<endl;
+        return;
+    }else if(a[i]>b[i]){
+        cout<<1<<endl;
+        return;
+    }
+}
+cout<<0<<endl;
    return;
 }
 int main(){
    ios::sync_with_stdio(false);
    cin.tie(nullptr);
    ll testcase=1;
-   cin>>testcase;
+//    cin>>testcase;
    while(testcase--){
        solve();
    }

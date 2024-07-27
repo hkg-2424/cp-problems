@@ -15,14 +15,25 @@ using namespace std;
 void solve(){
    int n;
    cin>>n;
-   string s;
-   cin>>s;
-   vector<int>v(26,n);
+   vector<int>v(n);
+   int numberofnegatives=0;
+   bool zeroesthere=false;
    for(int i=0;i<n;i++){
-      if(v[s[i]-'a']==n)v[s[i]-'a']=i;
+    cin>>v[i];
+    if(v[i]<0)numberofnegatives++;
+    else if(v[i]==0)zeroesthere=true;
    }
-   int sum=accumulate(all(v),0);
-   cout<<26*n-sum<<endl;
+   if(zeroesthere){
+    cout<<0<<endl;
+    return;
+   }
+   if(numberofnegatives&1){
+    cout<<0<<endl;
+   }else{
+    cout<<1<<endl;
+    cout<<1<<" "<<0<<endl;
+   }
+
    return;
 }
 int main(){

@@ -15,14 +15,9 @@ using namespace std;
 void solve(){
    int n;
    cin>>n;
-   string s;
-   cin>>s;
-   vector<int>v(26,n);
-   for(int i=0;i<n;i++){
-      if(v[s[i]-'a']==n)v[s[i]-'a']=i;
-   }
-   int sum=accumulate(all(v),0);
-   cout<<26*n-sum<<endl;
+   int ans=n/4;
+   if(n%4==2)ans++;
+   cout<<ans<<endl;
    return;
 }
 int main(){

@@ -14,22 +14,25 @@ using namespace std;
 
 void solve(){
    int n;
-   cin>>n;
    string s;
+   cin>>n;
    cin>>s;
-   vector<int>v(26,n);
+   int anton=0;
    for(int i=0;i<n;i++){
-      if(v[s[i]-'a']==n)v[s[i]-'a']=i;
+    if(s[i]=='A')anton++;
    }
-   int sum=accumulate(all(v),0);
-   cout<<26*n-sum<<endl;
+
+   if(anton>n-anton)cout<<"Anton";
+   else if(anton*2==n)cout<<"Friendship";
+   else cout<<"Danik";
+   cout<<endl;
    return;
 }
 int main(){
    ios::sync_with_stdio(false);
    cin.tie(nullptr);
    ll testcase=1;
-   cin>>testcase;
+//    cin>>testcase;
    while(testcase--){
        solve();
    }

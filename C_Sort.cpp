@@ -13,16 +13,32 @@ using namespace std;
 // hii my name is hkg
 
 void solve(){
-   int n;
-   cin>>n;
-   string s;
-   cin>>s;
-   vector<int>v(26,n);
-   for(int i=0;i<n;i++){
-      if(v[s[i]-'a']==n)v[s[i]-'a']=i;
+   int n,q;
+   cin>>n>>q;
+   string a,b;
+   cin>>a>>b;
+
+   vector<vector<int>>hasha(n+1,vector<int>(26,0));
+   for(int i=1;i<=n;i++){
+
+        for(int j=0;j<26;j++){
+            hasha[i][j]=hasha[i-1][j];
+            // hashb[i][j]=hashb[i-1][j];
+        }
+        hasha[i][a[i-1]-'a']++;
+        hasha[i][b[i-1]-'a']--;
+  
    }
-   int sum=accumulate(all(v),0);
-   cout<<26*n-sum<<endl;
+   for(int i=0;i<q;i++){
+    int l,r;
+    cin>>l>>r;
+    
+    int ans=0;
+    for(int j=0;j<26;j++){
+        ans+=abs((hasha[r][j]-hasha[l-1][j]));
+    }
+    cout<<ans/2<<endl;
+   }
    return;
 }
 int main(){

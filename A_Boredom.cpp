@@ -11,27 +11,38 @@ using namespace std;
 #define sz(v) (int)v.size()
 #define endl "\n"
 // hii my name is hkg
+vector<ll>ans(1e5+1,-1);
+vector<ll>freq(1e5+1,0);
 
-void solve(){
-   int n;
-   cin>>n;
-   string s;
-   cin>>s;
-   vector<int>v(26,n);
-   for(int i=0;i<n;i++){
-      if(v[s[i]-'a']==n)v[s[i]-'a']=i;
-   }
-   int sum=accumulate(all(v),0);
-   cout<<26*n-sum<<endl;
-   return;
+ll solution(ll num){
+    if(num<=0)return 0;
+    if(ans[num]!=-1)return ans[num];
+    ans[num]=max(num*freq[num]+solution(num-2),solution(num-1));
+    return ans[num];
 }
+void solve2(){
+    ll n;
+ 
+    cin>>n;
+    
+    for(int i=0;i<n;i++){
+        ll temp;
+        cin>>temp;
+        freq[temp]++;
+
+    }
+
+    cout<<solution(10000)<<endl;
+
+}
+
 int main(){
    ios::sync_with_stdio(false);
    cin.tie(nullptr);
    ll testcase=1;
-   cin>>testcase;
+//    cin>>testcase;
    while(testcase--){
-       solve();
+       solve2();
    }
    return 0;
 }

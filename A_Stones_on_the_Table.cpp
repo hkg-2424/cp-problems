@@ -15,21 +15,22 @@ using namespace std;
 void solve(){
    int n;
    cin>>n;
-   string s;
-   cin>>s;
-   vector<int>v(26,n);
+   char c='/';
+   int ans=0;
    for(int i=0;i<n;i++){
-      if(v[s[i]-'a']==n)v[s[i]-'a']=i;
+    char temp;
+    cin>>temp;
+    if(temp==c)ans++;
+    c=temp;
    }
-   int sum=accumulate(all(v),0);
-   cout<<26*n-sum<<endl;
+   cout<<ans<<endl;
    return;
 }
 int main(){
    ios::sync_with_stdio(false);
    cin.tie(nullptr);
    ll testcase=1;
-   cin>>testcase;
+//    cin>>testcase;
    while(testcase--){
        solve();
    }
